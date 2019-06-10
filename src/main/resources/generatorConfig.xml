@@ -5,13 +5,13 @@
 <!-- mybatis-generator的核心配置文件 -->
 <generatorConfiguration>
 	
-  <classPathEntry location="E:\briup\repository\mysql\mysql-connector-java\8.0.16/mysql-connector-java-8.0.16.jar" />
+  <classPathEntry location="E:\briup\repository\mysql\mysql-connector-java\8.0.16\mysql-connector-java-8.0.16.jar" />
   <context id="DB2Tables" targetRuntime="MyBatis3">
 
     <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
         connectionURL="jdbc:mysql://129.211.74.18:3306/ej1.0"
-        userId="root"
-        password="linbao.1326">
+        userId="briup"
+        password="briup">
       <!--产生selectByPrimaryKey-->
       <property name="useInformationSchema" value="true" />
     </jdbcConnection>

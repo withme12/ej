@@ -23,22 +23,40 @@ public class CustomerServiceImpl implements ICustomerService {
     @Override
     public Customer findCustomerById(Long id) {
 
-
         return customerMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public void insertOrUpdate(Customer Customer) throws Exception {
-
+    public void insertOrUpdate(Customer customer) throws Exception {
+            if(customer.getId()!=null){
+                customer.setStatus("正常");
+            customerMapper.updateByPrimaryKey(customer);
+            }else{
+                customer.setStatus("正常");
+            customerMapper.insert(customer);
+            }
     }
 
     @Override
     public void deleteCustomerById(Long id) throws Exception {
-
+            customerMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public List<Customer> query(Customer Customer) {
-        return null;
+    public List<Customer> query(Customer customer) {
+        CustomerExample example=new CustomerExample();
+if(customer.getRealname()!=null){
+        example.createCriteria().andRealnameLike("%"+customer.getRealname()+"%");
+}
+if(customer.getTelephone()!=null){
+        example.createCriteria().andTelephoneLike("%"+customer.getRealname()+"%");
+}
+        return customerMapper.selectByExample(example);
     }
+
+
+
+
+
+
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -58,4 +59,16 @@ public class CustomerController {
         List<Customer> list=customerService.query(customer);
         return MessageUtil.success("success",list);
     }
+    @GetMapping("BatchDelete")
+    @ApiOperation("批量删除顾客信息")
+    public Message BatchDelete(@NotNull(message = "ids不能为空") Long[] ids) throws Exception {
+        try {
+            customerService.BatchDelete(ids);
+            return MessageUtil.success("批量删除成功");
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return MessageUtil.error("删除失败");
+        }
+}
 }

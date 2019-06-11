@@ -26,6 +26,8 @@ public class CustomerServiceImpl implements ICustomerService {
         return customerMapper.selectByPrimaryKey(id);
     }
 
+
+
     @Override
     public void insertOrUpdate(Customer customer) throws Exception {
             if(customer.getId()!=null){
@@ -53,7 +55,12 @@ if(customer.getTelephone()!=null){
 }
         return customerMapper.selectByExample(example);
     }
-
+    @Override
+    public void BatchDelete(Long[] ids) throws Exception {
+        for(long id:ids){
+            customerMapper.deleteByPrimaryKey(id);
+        }
+    }
 
 
 

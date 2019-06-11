@@ -10,4 +10,5 @@ public interface ICommentService {
     void insertOrUpdate(Comment comment)throws Exception;
     void deleteCommentById(Long id) throws Exception;
     List<Comment> query(Comment comment);
+    void BatchDelete(Long[] ids)throws Exception;
 }

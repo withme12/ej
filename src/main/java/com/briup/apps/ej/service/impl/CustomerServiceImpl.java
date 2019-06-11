@@ -56,7 +56,7 @@ if(customer.getTelephone()!=null){
         return customerMapper.selectByExample(example);
     }
     @Override
-    public void BatchDelete(Long[] ids) throws Exception {
+    public void batchDelete(long[] ids) throws Exception {
         for(long id:ids){
             customerMapper.deleteByPrimaryKey(id);
         }

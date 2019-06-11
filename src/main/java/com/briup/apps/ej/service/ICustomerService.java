@@ -10,7 +10,7 @@ public interface ICustomerService {
     void insertOrUpdate(Customer customer)throws Exception;
     void deleteCustomerById(Long id) throws Exception;
     List<Customer> query(Customer customer);
-    void BatchDelete(Long[] ids)throws Exception;
+    void batchDelete(long[] ids)throws Exception;
 
    // List<CustomerExtend> selectAllWithTeacher();
 

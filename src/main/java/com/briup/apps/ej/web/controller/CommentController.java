@@ -7,10 +7,7 @@ import com.briup.apps.ej.utils.MessageUtil;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -60,12 +57,12 @@ public class CommentController {
     List<Comment> list=commentService.query(comment);
     return MessageUtil.success("success",list);
 }
-    @GetMapping("BatchDelete")
-    @ApiOperation("批量删除顾客信息")
-    public Message BatchDelete(@NotNull(message = "ids不能为空")Long[] ids)throws Exception{
+    @PostMapping("batchDelete")
+    @ApiOperation("批量删除评论信息")
+    public Message batchDelete(@NotNull(message = "ids不能为空")long[] ids)throws Exception{
 
       try
-      {commentService.BatchDelete(ids);
+      {commentService.batchDelete(ids);
         return MessageUtil.success("批量删除成功");
     }catch(Exception e){
           e.printStackTrace();

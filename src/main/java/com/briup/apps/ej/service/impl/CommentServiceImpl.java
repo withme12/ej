@@ -52,7 +52,7 @@ public class CommentServiceImpl implements ICommentService {
         return commentMapper.selectByExample(example);
     }
     @Override
-    public void BatchDelete(Long[] ids) throws Exception {
+    public void batchDelete(long[] ids) throws Exception {
         for(long id:ids){
             commentMapper.deleteByPrimaryKey(id);
         }

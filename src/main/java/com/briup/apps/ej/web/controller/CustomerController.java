@@ -14,10 +14,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-@Autowired
+    @Autowired
     private ICustomerService customerService;
 
-@GetMapping("findAll")
+    @GetMapping("findAll")
     public Message findAll(){
     List<Customer> list =customerService.findAll();
     return MessageUtil.success("success",list);

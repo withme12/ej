@@ -1,16 +1,46 @@
 package com.briup.apps.ej.service.impl;
 
+import com.briup.apps.ej.bean.Address;
+import com.briup.apps.ej.bean.AddressExample;
 import com.briup.apps.ej.bean.Category;
+import com.briup.apps.ej.bean.CategoryExample;
 import com.briup.apps.ej.dao.CategoryMapper;
 import com.briup.apps.ej.service.ICategoryService;
+import com.briup.apps.ej.utils.Message;
+import com.briup.apps.ej.utils.MessageUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class ICategoryServiceImpl implements ICategoryService {
     @Resource
     CategoryMapper cm;
+
+    @Override
+    public int insertOrUpdate(Category category) {
+        if(category.getId()==null)
+            return cm.insert(category);
+
+          return  cm.updateByPrimaryKeySelective(category);
+
+    }
+
+    @Override
+    public List<Category> findAll() {
+        CategoryExample ce=new CategoryExample();
+        return cm.selectByExample(ce);
+    }
+
+    @Override
+    public List<Category> query(Category category) {
+        CategoryExample ce=new CategoryExample();
+        if(category.getName()!=null)
+            ce.createCriteria().andNameLike("%"+category.getName()+"%");
+
+        return cm.selectByExample(ce);
+    }
 
     public int deleteByPrimaryKeys(Long[] ids) {
         for (Long id:ids) {
@@ -23,10 +53,7 @@ public class ICategoryServiceImpl implements ICategoryService {
         return cm.deleteByPrimaryKey(id);
     }
 
-    @Override
-    public int insert(Category record) {
-        return cm.insert(record);
-    }
+
 
     @Override
     public Category selectByPrimaryKey(Long id) {
@@ -34,8 +61,5 @@ public class ICategoryServiceImpl implements ICategoryService {
     }
 
 
-    @Override
-    public int updateByPrimaryKeySelective(Category record) {
-        return cm.updateByPrimaryKeySelective(record);
-    }
+
 }

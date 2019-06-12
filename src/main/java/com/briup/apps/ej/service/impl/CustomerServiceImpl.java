@@ -46,13 +46,16 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public List<Customer> query(Customer customer) {
+
+
         CustomerExample example=new CustomerExample();
-if(customer.getRealname()!=null){
+        if(customer.getTelephone()!=null){
+            example.createCriteria().andTelephoneLike("%"+customer.getTelephone()+"%");
+        }
+        if(customer.getRealname()!=null){
         example.createCriteria().andRealnameLike("%"+customer.getRealname()+"%");
 }
-if(customer.getTelephone()!=null){
-        example.createCriteria().andTelephoneLike("%"+customer.getRealname()+"%");
-}
+
         return customerMapper.selectByExample(example);
     }
     @Override

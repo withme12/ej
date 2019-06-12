@@ -9,5 +9,6 @@ public interface IWaiterService {
     void insertOrUpdate(Waiter product)throws Exception;
     void deleteWaiterById(Long id) throws Exception;
     List<Waiter> query(Waiter waiter);
+    void batchDelete(long[] ids)throws Exception;
 
 }

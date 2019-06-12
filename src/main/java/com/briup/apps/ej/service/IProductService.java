@@ -9,5 +9,6 @@ public interface IProductService {
     void insertOrUpdate(Product product)throws Exception;
     void deleteProductById(Long id) throws Exception;
     List<Product> query(Product product);
+    void batchDelete(long[] ids)throws Exception;
 
 }

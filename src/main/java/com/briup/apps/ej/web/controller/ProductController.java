@@ -7,11 +7,9 @@ import com.briup.apps.ej.utils.MessageUtil;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -54,5 +52,18 @@ public class ProductController {
     public Message query(Product product){
         List<Product> list=productService.query(product);
         return MessageUtil.success("success",list);
+    }
+
+    @PostMapping("batchDelete")
+    @ApiOperation("批量删除顾客信息")
+    public Message BatchDelete(@NotNull(message = "ids不能为空") long[] ids) throws Exception {
+        try {
+            productService.batchDelete(ids);
+            return MessageUtil.success("批量删除成功");
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return MessageUtil.error("删除失败");
+        }
     }
 }

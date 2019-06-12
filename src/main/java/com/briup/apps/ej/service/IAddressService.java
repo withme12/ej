@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 public interface IAddressService {
     int deleteByPrimaryKey(Long id);
     int insert(Address record);
-
+    int deleteByPrimaryKeys(Long[] ids);
     Address selectByPrimaryKey(Long id);
     int updateByPrimaryKeySelective(Address record);
 }

@@ -6,6 +6,6 @@ public interface ICategoryService {
     int deleteByPrimaryKey(Long id);
     int insert(Category record);
     Category selectByPrimaryKey(Long id);
-
+    int deleteByPrimaryKeys(Long[] ids);
     int updateByPrimaryKeySelective(Category record);
 }

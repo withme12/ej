@@ -130,6 +130,7 @@
     delete from ej_address
     where id = #{id,jdbcType=BIGINT}
   </delete>
+
   <delete id="deleteByExample" parameterType="com.briup.apps.ej.bean.AddressExample">
     <!--
       WARNING - @mbg.generated

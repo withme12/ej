@@ -27,11 +27,20 @@ public class AddressController {
         return MessageUtil.success("success",ids.selectByPrimaryKey(id));
     }
 
+
+
     @ApiOperation("删除通过id")
     @GetMapping("/deleteByPrimaryKey")
     public Message deleteByPrimaryKey(@ApiParam(value ="主键" ,required=true)
                             @RequestParam(value="id") Long id){
         return MessageUtil.success("success",ids.deleteByPrimaryKey(id));
+    }
+
+    @ApiOperation("删除通过ids")
+    @GetMapping("/deleteByPrimaryKeys")
+    public Message deleteByPrimaryKeys(@ApiParam(value ="主键" ,required=true)
+                                      @RequestParam(value="ids") Long[] idss){
+        return MessageUtil.success("success",ids.deleteByPrimaryKeys(idss));
     }
 
     @ApiOperation("插入")

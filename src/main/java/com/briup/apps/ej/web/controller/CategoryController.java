@@ -36,6 +36,13 @@ public class CategoryController {
             return MessageUtil.success("success", ics.deleteByPrimaryKey(id));
         }
 
+    @ApiOperation("删除通过ids")
+    @GetMapping("/deleteByPrimaryKeys")
+    public Message deleteByPrimaryKeys(@ApiParam(value ="主键" ,required=true)
+                                       @RequestParam(value="ids") Long[] ids){
+        return MessageUtil.success("success",ics.deleteByPrimaryKeys(ids));
+    }
+
         @ApiOperation("插入")
         @GetMapping("/insert")
         public Message insert(Category category) {

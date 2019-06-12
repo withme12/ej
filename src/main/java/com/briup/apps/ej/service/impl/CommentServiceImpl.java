@@ -37,6 +37,8 @@ public class CommentServiceImpl implements ICommentService {
             commentMapper.deleteByPrimaryKey(id);
     }
 
+
+
     @Override
     public List<Comment> query(Comment comment) {
         CommentExample example=new CommentExample();
@@ -48,5 +50,11 @@ public class CommentServiceImpl implements ICommentService {
         }
 
         return commentMapper.selectByExample(example);
+    }
+    @Override
+    public void batchDelete(long[] ids) throws Exception {
+        for(long id:ids){
+            commentMapper.deleteByPrimaryKey(id);
+        }
     }
 }

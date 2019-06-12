@@ -1,7 +1,7 @@
 package com.briup.apps.ej.service.impl;
 
-import com.briup.apps.ej.bean.Customer;
 import com.briup.apps.ej.bean.Product;
+import com.briup.apps.ej.bean.ProductExample;
 import com.briup.apps.ej.dao.ProductMapper;
 import com.briup.apps.ej.service.IProductService;
 import org.springframework.stereotype.Service;
@@ -12,8 +12,40 @@ import java.util.List;
 public class ProductServiceImpl implements IProductService {
     @Resource
     private ProductMapper productMapper;
+
     @Override
     public Product findProductById(Long id) {
+
         return productMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public void insertOrUpdate(Product product) throws Exception {
+        if(product.getId()!=null){
+            product.setStatus("正常");
+            productMapper.updateByPrimaryKey(product);
+        }else{
+            product.setStatus("正常");
+            productMapper.insert(product);
+        }
+    }
+
+    @Override
+    public void deleteProductById(Long id) throws Exception {
+        productMapper.deleteByPrimaryKey(id);
+    }
+
+
+    @Override
+    public List<Product> query(Product product) {
+        ProductExample example=new ProductExample();
+        if(product.getName()!=null){
+            example.createCriteria().andNameLike("%"+product.getName()+"%");
+        }
+        if(product.getName()!=null){
+            example.createCriteria().andNameLike("%"+product.getName()+"%");
+        }
+        return productMapper.selectByExample(example);
+    }
+
 }

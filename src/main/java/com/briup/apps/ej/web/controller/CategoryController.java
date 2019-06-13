@@ -6,13 +6,18 @@ import com.briup.apps.ej.service.IAddressService;
 import com.briup.apps.ej.service.ICategoryService;
 import com.briup.apps.ej.utils.Message;
 import com.briup.apps.ej.utils.MessageUtil;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
-
+@Api(description = "种类管理相关接口")
+@Validated
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -31,7 +36,9 @@ public class CategoryController {
 
         @ApiOperation("删除通过id")
         @GetMapping("/deleteById")
-        public Message deleteByPrimaryKey(@ApiParam(value = "主键", required = true)
+        public Message deleteByPrimaryKey(
+                @NotNull
+                @ApiParam(value = "主键", required = true)
                                           @RequestParam(value = "id") Long id) {
             return MessageUtil.success("success", ics.deleteByPrimaryKey(id));
         }

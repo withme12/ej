@@ -4,7 +4,7 @@ import com.briup.apps.ej.bean.Category;
 import com.briup.apps.ej.bean.CategoryExample;
 import java.util.List;
 
-import com.briup.apps.ej.bean.CategoryExtend;
+import com.briup.apps.ej.bean.extend.CategoryExtend;
 import org.apache.ibatis.annotations.Param;
 
 public interface CategoryMapper {

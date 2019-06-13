@@ -1,6 +1,8 @@
-package com.briup.apps.ej.bean;
+package com.briup.apps.ej.bean.extend;
 
-public class CategoryExtend extends Category{
+import com.briup.apps.ej.bean.Category;
+
+public class CategoryExtend extends Category {
     private Category category;
 
     public Category getCategory() {

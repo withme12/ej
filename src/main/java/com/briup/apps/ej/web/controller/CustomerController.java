@@ -6,11 +6,13 @@ import com.briup.apps.ej.utils.MessageUtil;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-
+@Validated
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -30,7 +32,7 @@ public class CustomerController {
     }
     @GetMapping("insertOrUpdate")
     @ApiOperation("新增或者更新顾客信息")
-    public Message insertOrUpdate(Customer customer)throws Exception{
+    public Message insertOrUpdate( Customer customer)throws Exception{
         try{
             customerService.insertOrUpdate(customer);
             return MessageUtil.success("success");

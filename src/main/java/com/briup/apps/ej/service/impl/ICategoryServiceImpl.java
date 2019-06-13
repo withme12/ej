@@ -1,10 +1,9 @@
 package com.briup.apps.ej.service.impl;
 
 import com.briup.apps.ej.bean.*;
+import com.briup.apps.ej.bean.extend.CategoryExtend;
 import com.briup.apps.ej.dao.CategoryMapper;
 import com.briup.apps.ej.service.ICategoryService;
-import com.briup.apps.ej.utils.Message;
-import com.briup.apps.ej.utils.MessageUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

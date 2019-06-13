@@ -2,12 +2,9 @@ package com.briup.apps.ej.service.impl;
 
 import com.briup.apps.ej.bean.Address;
 import com.briup.apps.ej.bean.AddressExample;
-import com.briup.apps.ej.bean.AddressExtend;
-import com.briup.apps.ej.bean.Category;
+import com.briup.apps.ej.bean.extend.AddressExtend;
 import com.briup.apps.ej.dao.AddressMapper;
 import com.briup.apps.ej.service.IAddressService;
-import com.briup.apps.ej.utils.Message;
-import com.briup.apps.ej.utils.MessageUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

@@ -1,5 +1,9 @@
 package com.briup.apps.ej.bean;
 
+import io.swagger.annotations.ApiParam;
+
+import javax.validation.constraints.NotBlank;
+
 public class Category {
     /**
      *
@@ -8,6 +12,8 @@ public class Category {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="种类ID")
+
     private Long id;
 
     /**
@@ -17,6 +23,8 @@ public class Category {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="种类名",required=true)
+    @NotBlank(message = "种类名不能为空")
     private String name;
 
     /**
@@ -26,6 +34,7 @@ public class Category {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="数量")
     private Integer num;
 
     /**
@@ -35,6 +44,8 @@ public class Category {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="父种类ID")
+    @NotBlank(message = "父种类ID不能为空")
     private Long parentId;
 
     /**

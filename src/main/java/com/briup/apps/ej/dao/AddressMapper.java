@@ -4,7 +4,7 @@ import com.briup.apps.ej.bean.Address;
 import com.briup.apps.ej.bean.AddressExample;
 import java.util.List;
 
-import com.briup.apps.ej.bean.AddressExtend;
+import com.briup.apps.ej.bean.extend.AddressExtend;
 import org.apache.ibatis.annotations.Param;
 
 public interface AddressMapper {

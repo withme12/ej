@@ -1,5 +1,11 @@
 package com.briup.apps.ej.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiParam;
+
+import javax.validation.constraints.NotBlank;
+
+@ApiModel("地址模型")
 public class Address {
     /**
      *
@@ -8,6 +14,7 @@ public class Address {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="地址ID")
     private Long id;
 
     /**
@@ -17,6 +24,8 @@ public class Address {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="省",required = true)
+    @NotBlank(message = "省不能为空")
     private String province;
 
     /**
@@ -26,6 +35,8 @@ public class Address {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="城市",required=true)
+    @NotBlank(message = "城市不能为空")
     private String city;
 
     /**
@@ -35,6 +46,8 @@ public class Address {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="地区" )
+    @NotBlank(message = "地区不能为空")
     private String area;
 
     /**
@@ -44,6 +57,7 @@ public class Address {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="地址")
     private String address;
 
     /**
@@ -53,6 +67,7 @@ public class Address {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="电话")
     private String telephone;
 
     /**
@@ -62,6 +77,8 @@ public class Address {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+    @ApiParam(value="客户id" )
+    @NotBlank(message = "客户ID不能为空")
     private Long customerId;
 
     /**

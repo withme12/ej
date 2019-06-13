@@ -1,21 +1,20 @@
 package com.briup.apps.ej.web.controller;
 
 import com.briup.apps.ej.bean.Address;
-import com.briup.apps.ej.bean.AddressExample;
-import com.briup.apps.ej.bean.AddressExtend;
-import com.briup.apps.ej.bean.Customer;
+import com.briup.apps.ej.bean.extend.AddressExtend;
 import com.briup.apps.ej.service.IAddressService;
 import com.briup.apps.ej.utils.Message;
 import com.briup.apps.ej.utils.MessageUtil;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+@Api(description = "地址管理相关接口")
 @Validated
 @RestController
 @RequestMapping("/address")
@@ -35,21 +34,23 @@ public class AddressController {
     @GetMapping("/deleteById")
     public Message deleteByPrimaryKey(@NotNull
             @ApiParam(value ="主键" ,required=true)
-                            @RequestParam(value="id") Long id){
+                            @RequestParam(value="id") Long id) {
+
         return MessageUtil.success("success",ids.deleteByPrimaryKey(id));
     }
 
-    @GetMapping("findAll")
+    @GetMapping("/findAll")
     public Message findAll() {
         List<Address> list = ids.findAll();
         return MessageUtil.success("success", list);
     }
 
-    @GetMapping("findAllWithCustomer")
+    @GetMapping("/findAllWithCustomer")
     public Message findAllWithCustomer() {
         List<AddressExtend> list = ids.findAllWithCustomer();
         return MessageUtil.success("success", list);
     }
+
     @ApiOperation("删除通过ids")
     @PostMapping("/batchDelete")
     public Message deleteByPrimaryKeys(@ApiParam(value ="主键" ,required=true)
@@ -57,12 +58,12 @@ public class AddressController {
         return MessageUtil.success("success",ids.deleteByPrimaryKeys(idss));
     }
 
-    @ApiOperation("插入")
+    @ApiOperation("插入和修改")
     @PostMapping("/insertOrUpdate")
-    public Message insertOrUpdate(@Valid @ModelAttribute Address address){
+    public Message insertOrUpdate(Address address){
         return MessageUtil.success("success",ids.insertOrUpdate(address));
     }
-    @GetMapping("query")
+    @GetMapping("/query")
     @ApiOperation("模糊查询顾客信息")
     public Message query(Address address){
         List<Address> list=ids.query(address);

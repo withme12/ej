@@ -1,6 +1,9 @@
-package com.briup.apps.ej.bean;
+package com.briup.apps.ej.bean.extend;
 
-public class AddressExtend extends Address{
+import com.briup.apps.ej.bean.Address;
+import com.briup.apps.ej.bean.Customer;
+
+public class AddressExtend extends Address {
     private Customer customer;
 
     public Customer getCustomer() {

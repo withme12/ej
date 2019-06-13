@@ -17,7 +17,11 @@ import java.util.List;
 public class WaiterController {
     @Autowired
     private IWaiterService waiterService;
-
+    @GetMapping("findAll")
+    public Message findAll(){
+        List<Waiter> list =waiterService.findAll();
+        return MessageUtil.success("success",list);
+    }
 
     @GetMapping("findWaiterById")
     @ApiOperation("通过ID查询服务员信息")
@@ -41,7 +45,7 @@ public class WaiterController {
     public Message deleteWaiterById(@ApiParam(value="主键",required=true)@RequestParam("id") Long id)throws Exception{
         try {
             waiterService.deleteWaiterById(id);
-            return MessageUtil.success("success");
+            return MessageUtil.success("删除成功");
         }catch (Exception e) {
             e.printStackTrace();
             return MessageUtil.error("删除失败");

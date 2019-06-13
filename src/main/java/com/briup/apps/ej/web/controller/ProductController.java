@@ -18,6 +18,11 @@ public class ProductController {
     @Autowired
     private IProductService productService;
 
+    @GetMapping("findAll")
+    public Message findAll(){
+        List<Product> list =productService.findAll();
+        return MessageUtil.success("success",list);
+    }
 
     @GetMapping("findProductById")
     @ApiOperation("通过ID查询产品信息")

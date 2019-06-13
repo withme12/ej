@@ -13,6 +13,11 @@ import java.util.List;
 public class WaiterServiceImpl implements IWaiterService {
     @Resource
     private WaiterMapper waiterMapper;
+    @Override
+    public List<Waiter> findAll() {
+        WaiterExample example=new WaiterExample();
+        return waiterMapper.selectByExample(example);
+    }
 
     @Override
     public Waiter findWaiterById(Long id) {

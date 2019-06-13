@@ -1,33 +1,57 @@
 package com.briup.apps.ej.service.impl;
 
 import com.briup.apps.ej.bean.Order;
+import com.briup.apps.ej.bean.OrderExample;
 import com.briup.apps.ej.dao.OrderMapper;
-import com.briup.apps.ej.service.IOrder;
+import com.briup.apps.ej.service.IOrderService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
-public class OrderServiceImpl implements IOrder {
+public class OrderServiceImpl implements IOrderService {
     @Resource
     private OrderMapper orderMapper;
+
+
+
     @Override
-    public int insertSelective(Order record) {
-        return orderMapper.insertSelective(record);
+    public List<Order> findAll() {
+        OrderExample orderExample=new OrderExample();
+        return orderMapper.selectByExample(orderExample);
     }
 
     @Override
-    public int deleteByPrimaryKey(Long id) {
-        return orderMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public int updateByPrimaryKeySelective(Order record) {
-        return orderMapper.updateByPrimaryKeySelective(record);
-    }
-
-    @Override
-    public Order selectByPrimaryKey(Long id) {
+    public Order findOrderById(Long id) {
         return orderMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void insertOrUpdate(Order order) throws Exception {
+        if(order.getId()!=null){
+            order.setStatus("正常");
+            orderMapper.updateByPrimaryKey(order);
+        }else{
+            order.setStatus("正常");
+            orderMapper.insert(order);
+        }
+    }
+
+    @Override
+    public void deleteOrderById(Long id) throws Exception {
+        Order order = orderMapper.selectByPrimaryKey(id);
+        if(order == null){
+            throw new Exception("要删除的用户不存在");
+        } else {
+            orderMapper.deleteByPrimaryKey(id);
+        }
+    }
+
+    @Override
+    public void batchDelete(long[] ids) throws Exception {
+    for (long id : ids){
+        orderMapper.deleteByPrimaryKey(id);
+        }
     }
 }

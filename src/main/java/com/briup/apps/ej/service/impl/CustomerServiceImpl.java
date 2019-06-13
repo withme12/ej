@@ -26,6 +26,8 @@ public class CustomerServiceImpl implements ICustomerService {
         return customerMapper.selectByPrimaryKey(id);
     }
 
+
+
     @Override
     public void insertOrUpdate(Customer customer) throws Exception {
             if(customer.getId()!=null){
@@ -44,16 +46,24 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public List<Customer> query(Customer customer) {
+
+
         CustomerExample example=new CustomerExample();
-if(customer.getRealname()!=null){
+        if(customer.getTelephone()!=null){
+            example.createCriteria().andTelephoneLike("%"+customer.getTelephone()+"%");
+        }
+        if(customer.getRealname()!=null){
         example.createCriteria().andRealnameLike("%"+customer.getRealname()+"%");
 }
-if(customer.getTelephone()!=null){
-        example.createCriteria().andTelephoneLike("%"+customer.getRealname()+"%");
-}
+
         return customerMapper.selectByExample(example);
     }
-
+    @Override
+    public void batchDelete(long[] ids) throws Exception {
+        for(long id:ids){
+            customerMapper.deleteByPrimaryKey(id);
+        }
+    }
 
 
 

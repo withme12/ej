@@ -3,6 +3,8 @@ package com.briup.apps.ej.dao;
 import com.briup.apps.ej.bean.Category;
 import com.briup.apps.ej.bean.CategoryExample;
 import java.util.List;
+
+import com.briup.apps.ej.bean.CategoryExtend;
 import org.apache.ibatis.annotations.Param;
 
 public interface CategoryMapper {
@@ -93,4 +95,5 @@ public interface CategoryMapper {
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
     int updateByPrimaryKey(Category record);
+    List<CategoryExtend> findAllWithCategory();
 }

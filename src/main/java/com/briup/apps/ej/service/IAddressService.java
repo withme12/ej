@@ -1,9 +1,6 @@
 package com.briup.apps.ej.service;
 
-import com.briup.apps.ej.bean.Address;
-import com.briup.apps.ej.bean.AddressExample;
-import com.briup.apps.ej.bean.Category;
-import com.briup.apps.ej.bean.Customer;
+import com.briup.apps.ej.bean.*;
 import com.briup.apps.ej.utils.Message;
 import org.apache.ibatis.annotations.Param;
 
@@ -18,4 +15,5 @@ public interface IAddressService {
     int insertOrUpdate(Address address);
     List<Address> findAll();
     List<Address>  query(Address address);
+    List<AddressExtend> findAllWithCustomer();
 }

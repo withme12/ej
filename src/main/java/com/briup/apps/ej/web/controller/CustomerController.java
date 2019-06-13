@@ -41,7 +41,7 @@ public class CustomerController {
     }
     @GetMapping("deleteCustomerById")
     @ApiOperation("根据ID更新顾客信息")
-    public Message deleteCustomerById(@ApiParam(value="主键",required=true)@RequestParam("id") Long id)throws Exception{
+    public Message deleteCustomerById(@ApiParam(value="主键",required=true)@RequestParam("id") Long id) throws Exception{
         try {
             customerService.deleteCustomerById(id);
             return MessageUtil.success("success");

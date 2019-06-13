@@ -2,6 +2,7 @@ package com.briup.apps.ej.service;
 
 
 import com.briup.apps.ej.bean.Category;
+import com.briup.apps.ej.bean.CategoryExtend;
 import com.briup.apps.ej.utils.Message;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface ICategoryService {
     int insertOrUpdate(Category category);
     List<Category> findAll();
     List<Category> query(Category category);
+
+    List<CategoryExtend> findAllWithCategory();
 }

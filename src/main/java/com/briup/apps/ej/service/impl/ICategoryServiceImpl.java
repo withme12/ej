@@ -1,9 +1,6 @@
 package com.briup.apps.ej.service.impl;
 
-import com.briup.apps.ej.bean.Address;
-import com.briup.apps.ej.bean.AddressExample;
-import com.briup.apps.ej.bean.Category;
-import com.briup.apps.ej.bean.CategoryExample;
+import com.briup.apps.ej.bean.*;
 import com.briup.apps.ej.dao.CategoryMapper;
 import com.briup.apps.ej.service.ICategoryService;
 import com.briup.apps.ej.utils.Message;
@@ -17,6 +14,11 @@ import java.util.List;
 public class ICategoryServiceImpl implements ICategoryService {
     @Resource
     CategoryMapper cm;
+
+    @Override
+    public List<CategoryExtend> findAllWithCategory() {
+        return cm.findAllWithCategory();
+    }
 
     @Override
     public int insertOrUpdate(Category category) {

@@ -3,6 +3,8 @@ package com.briup.apps.ej.dao;
 import com.briup.apps.ej.bean.Address;
 import com.briup.apps.ej.bean.AddressExample;
 import java.util.List;
+
+import com.briup.apps.ej.bean.AddressExtend;
 import org.apache.ibatis.annotations.Param;
 
 public interface AddressMapper {
@@ -12,6 +14,7 @@ public interface AddressMapper {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+
     long countByExample(AddressExample example);
 
     /**
@@ -20,6 +23,7 @@ public interface AddressMapper {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+
     int deleteByExample(AddressExample example);
 
 
@@ -53,6 +57,7 @@ public interface AddressMapper {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+
     List<Address> selectByExample(AddressExample example);
 
     /**
@@ -61,6 +66,7 @@ public interface AddressMapper {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+
     Address selectByPrimaryKey(Long id);
 
     /**
@@ -77,6 +83,7 @@ public interface AddressMapper {
      *
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
+
     int updateByExample(@Param("record") Address record, @Param("example") AddressExample example);
 
     /**
@@ -94,4 +101,6 @@ public interface AddressMapper {
      * @mbg.generated Mon Jun 10 15:24:11 CST 2019
      */
     int updateByPrimaryKey(Address record);
+
+    List<AddressExtend> findAllWithCustomer();
 }

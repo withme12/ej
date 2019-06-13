@@ -9,10 +9,7 @@ import com.briup.apps.ej.utils.MessageUtil;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,21 +37,27 @@ public class CategoryController {
         }
 
     @ApiOperation("删除通过ids")
-    @GetMapping("/batchDelete")
+    @PostMapping("/batchDelete")
     public Message deleteByPrimaryKeys(@ApiParam(value ="主键" ,required=true)
                                        @RequestParam(value="ids") Long[] ids){
         return MessageUtil.success("success",ics.deleteByPrimaryKeys(ids));
     }
 
         @ApiOperation("插入")
-        @GetMapping("/insertOrUpdate")
+        @PostMapping("/insertOrUpdate")
         public Message insertOrUpdate(Category category) {
             return MessageUtil.success("success", ics.insertOrUpdate(category));
         }
-    @ApiOperation("插入")
+    @ApiOperation("查找所有")
     @GetMapping("/findAll")
     public Message findAll() {
         return MessageUtil.success("success", ics.findAll());
+    }
+
+    @ApiOperation("查找所有包含父信息")
+    @GetMapping("/findAllWithCategory")
+    public Message findAllWithCategory() {
+        return MessageUtil.success("success", ics.findAllWithCategory());
     }
 
     @GetMapping("query")

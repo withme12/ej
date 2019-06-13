@@ -2,6 +2,7 @@ package com.briup.apps.ej.service.impl;
 
 import com.briup.apps.ej.bean.Address;
 import com.briup.apps.ej.bean.AddressExample;
+import com.briup.apps.ej.bean.AddressExtend;
 import com.briup.apps.ej.bean.Category;
 import com.briup.apps.ej.dao.AddressMapper;
 import com.briup.apps.ej.service.IAddressService;
@@ -22,6 +23,11 @@ public class IAddressServiceImpl  implements IAddressService {
     public List<Address> findAll() {
         AddressExample ae=new AddressExample();
         return am.selectByExample(ae);
+    }
+
+    @Override
+    public List<AddressExtend> findAllWithCustomer() {
+        return am.findAllWithCustomer();
     }
 
     @Override

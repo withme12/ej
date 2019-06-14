@@ -1,4 +1,5 @@
 package com.briup.apps.ej.web.controller;
+import com.briup.apps.ej.bean.extend.OrderExtend;
 import com.briup.apps.ej.utils.Message;
 import com.briup.apps.ej.bean.Customer;
 import com.briup.apps.ej.service.ICustomerService;
@@ -18,7 +19,6 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     private ICustomerService customerService;
-
     @GetMapping("findAll")
     public Message findAll(){
     List<Customer> list =customerService.findAll();
@@ -70,4 +70,10 @@ public class CustomerController {
             return MessageUtil.error("删除失败");
         }
 }
+    @PostMapping("findOrderAllMessageById")
+    @ApiOperation("查询用户的订单的巨详细")
+    public Message findOrderAllMessageById(@NotNull @RequestParam("id") Long id){
+        List<OrderExtend> list =customerService.findOrderAllMessageById(id);
+        return MessageUtil.success("success",list);
+    }
 }

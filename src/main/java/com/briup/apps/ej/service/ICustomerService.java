@@ -1,6 +1,7 @@
 package com.briup.apps.ej.service;
 
 import com.briup.apps.ej.bean.Customer;
+import com.briup.apps.ej.bean.extend.OrderExtend;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public interface ICustomerService {
     void deleteCustomerById(Long id) throws Exception;
     List<Customer> query(Customer customer);
     void batchDelete(long[] ids)throws Exception;
+    List<OrderExtend> findOrderAllMessageById(Long id);
 
    // List<CustomerExtend> selectAllWithTeacher();
 

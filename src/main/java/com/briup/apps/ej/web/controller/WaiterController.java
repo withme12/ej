@@ -29,7 +29,7 @@ public class WaiterController {
         Waiter waiter=waiterService.findWaiterById(id);
         return MessageUtil.success("查询成功",waiter);
     }
-    @GetMapping("insertOrUpdate")
+    @PostMapping("insertOrUpdate")
     @ApiOperation("新增或者更新服务员信息")
     public Message insertOrUpdate(Waiter waiter)throws Exception{
         try{

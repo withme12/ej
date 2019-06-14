@@ -51,7 +51,7 @@ public class WaiterController {
             return MessageUtil.error("删除失败");
         }
     }
-    @GetMapping("query")
+    @PostMapping("query")
     @ApiOperation("模糊查询服务员信息")
     public Message query(Waiter waiter){
         List<Waiter> list=waiterService.query(waiter);

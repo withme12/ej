@@ -52,7 +52,7 @@ public class ProductController {
             return MessageUtil.error("删除失败");
         }
     }
-    @GetMapping("query")
+    @PostMapping("query")
     @ApiOperation("模糊查询产品信息")
     public Message query(Product product){
         List<Product> list=productService.query(product);

@@ -4,16 +4,16 @@ import com.briup.apps.ej.utils.Message;
 import com.briup.apps.ej.bean.Customer;
 import com.briup.apps.ej.service.ICustomerService;
 import com.briup.apps.ej.utils.MessageUtil;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-@Validated
+@Api(description = "顾客管理相关接口")
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -30,7 +30,7 @@ public class CustomerController {
         Customer customer=customerService.findCustomerById(id);
         return MessageUtil.success("success",customer);
     }
-    @GetMapping("insertOrUpdate")
+    @PostMapping("insertOrUpdate")
     @ApiOperation("新增或者更新顾客信息")
     public Message insertOrUpdate( Customer customer)throws Exception{
         try{
@@ -71,9 +71,21 @@ public class CustomerController {
         }
 }
     @PostMapping("findOrderAllMessageById")
-    @ApiOperation("查询用户的订单的巨详细")
+    @ApiOperation("根据ID查询某订单的详细信息")
     public Message findOrderAllMessageById(@NotNull @RequestParam("id") Long id){
         List<OrderExtend> list =customerService.findOrderAllMessageById(id);
         return MessageUtil.success("success",list);
+    }
+    @ApiOperation("查询客户或者服务者全部订单信息")
+    @GetMapping("query2")
+    public Message query2(Long customerId, Long waiterId){
+        try {
+            List<OrderExtend> list=customerService.query2(customerId,waiterId);
+            return MessageUtil.success("success",list);
+        }catch (Exception e){
+            e.printStackTrace();
+            return MessageUtil.error(e.getMessage());
+        }
+
     }
 }

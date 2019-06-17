@@ -30,7 +30,7 @@ public class ProductController {
         Product product=productService.findProductById(id);
         return MessageUtil.success("查询成功",product);
     }
-    @GetMapping("insertOrUpdate")
+    @PostMapping("insertOrUpdate")
     @ApiOperation("新增或者更新产品信息")
     public Message insertOrUpdate(Product product)throws Exception{
         try{

@@ -70,6 +70,16 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public List<OrderExtend> findOrderAllMessageById(Long id) {
+
         return orderExtendMapper.findOrderAllMessageById(id);
+    }
+    @Override                 //查询客户或者服务者全部订单信息
+    public List<OrderExtend> query2(Long customerId, Long waiterId)throws Exception {
+        List<OrderExtend> list=orderExtendMapper.query2(customerId,waiterId);
+        if(list==null){
+            throw new Exception("不存在符合要求的订单");
+        }else{
+            return orderExtendMapper.query2(customerId,waiterId);}
+
     }
 }

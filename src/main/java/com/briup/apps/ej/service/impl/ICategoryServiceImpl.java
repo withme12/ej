@@ -3,6 +3,8 @@ package com.briup.apps.ej.service.impl;
 import com.briup.apps.ej.bean.*;
 import com.briup.apps.ej.bean.extend.CategoryExtend;
 import com.briup.apps.ej.dao.CategoryMapper;
+
+import com.briup.apps.ej.dao.extend.CategoryExtendMapper;
 import com.briup.apps.ej.service.ICategoryService;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +15,13 @@ import java.util.List;
 public class ICategoryServiceImpl implements ICategoryService {
     @Resource
     CategoryMapper cm;
+    @Resource
+    private CategoryExtendMapper categoryExtendMapper;
 
-    @Override
-    public List<CategoryExtend> findAllWithCategory() {
-        return cm.findAllWithCategory();
-    }
+//    @Override
+//    public List<CategoryExtend> findProductWithCategory(Long id) {
+//        return categoryExtendMapper.findProductWithCategory(id);
+//    }
 
     @Override
     public int insertOrUpdate(Category category) {
@@ -26,6 +30,11 @@ public class ICategoryServiceImpl implements ICategoryService {
 
           return  cm.updateByPrimaryKeySelective(category);
 
+    }
+
+    @Override
+    public List<CategoryExtend> findAllProductWithCategory(Long id) {
+        return categoryExtendMapper.findAllProductWithCategory(id);
     }
 
     @Override

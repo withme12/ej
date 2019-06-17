@@ -1,6 +1,8 @@
 package com.briup.apps.ej.web.controller;
 
 import com.briup.apps.ej.bean.Waiter;
+import com.briup.apps.ej.bean.extend.OrderExtend;
+import com.briup.apps.ej.dao.extend.OrderExtendMapper;
 import com.briup.apps.ej.service.IWaiterService;
 import com.briup.apps.ej.utils.Message;
 import com.briup.apps.ej.utils.MessageUtil;
@@ -69,6 +71,12 @@ public class WaiterController {
             e.printStackTrace();
             return MessageUtil.error("删除失败");
         }
+    }
+    @PostMapping("findWaiterOrderMessageById")
+    @ApiOperation("查看服务者做过的订单信息")
+    public Message findWaiterOrderMessageById(@NotNull(message = "服务者id不能为空")@RequestParam("id")Long id){
+        List<OrderExtend> list = waiterService.findWaiterOrderMessageById(id);
+        return MessageUtil.success("success",list);
     }
 
 }

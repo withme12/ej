@@ -2,6 +2,8 @@ package com.briup.apps.ej.service;
 
 import com.briup.apps.ej.bean.Customer;
 import com.briup.apps.ej.bean.Order;
+import com.briup.apps.ej.bean.extend.OrderExtend;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,4 +13,5 @@ public interface IOrderService {
     void insertOrUpdate(Order order)throws Exception;
     void deleteOrderById(Long id) throws Exception;
     void batchDelete(long[] ids) throws Exception;
+
 }

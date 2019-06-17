@@ -2,7 +2,9 @@ package com.briup.apps.ej.service.impl;
 
 import com.briup.apps.ej.bean.Waiter;
 import com.briup.apps.ej.bean.WaiterExample;
+import com.briup.apps.ej.bean.extend.OrderExtend;
 import com.briup.apps.ej.dao.WaiterMapper;
+import com.briup.apps.ej.dao.extend.OrderExtendMapper;
 import com.briup.apps.ej.service.IWaiterService;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.List;
 public class WaiterServiceImpl implements IWaiterService {
     @Resource
     private WaiterMapper waiterMapper;
+    @Resource
+    private OrderExtendMapper orderExtendMapper;
     @Override
     public List<Waiter> findAll() {
         WaiterExample example=new WaiterExample();
@@ -58,6 +62,11 @@ public class WaiterServiceImpl implements IWaiterService {
         for(long id:ids){
             waiterMapper.deleteByPrimaryKey(id);
         }
+    }
+
+    @Override
+    public List<OrderExtend> findWaiterOrderMessageById(Long id) {
+        return orderExtendMapper.findWaiterOrderMessageById(id);
     }
 
 }

@@ -45,13 +45,13 @@ public class AddressController {
         return MessageUtil.success("success", list);
     }
 
-    @GetMapping("/findAllWithCustomer")
-    public Message findAllWithCustomer() {
-        List<AddressExtend> list = ids.findAllWithCustomer();
-        return MessageUtil.success("success", list);
-    }
+//    @GetMapping("/findAllWithCustomer")
+//    public Message findAllWithCustomer() {
+//        List<AddressExtend> list = ids.findAllWithCustomer();
+//        return MessageUtil.success("success", list);
+//    }
 
-    @ApiOperation("删除通过ids")
+    @ApiOperation("批量删除")
     @PostMapping("/batchDelete")
     public Message deleteByPrimaryKeys(@ApiParam(value ="主键" ,required=true)
                                       @RequestParam(value="ids") Long[] idss){

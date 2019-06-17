@@ -15,6 +15,7 @@ public interface ICategoryService {
     int insertOrUpdate(Category category);
     List<Category> findAll();
     List<Category> query(Category category);
+//    List<CategoryExtend> findProductWithCategory(Long id);
+List<CategoryExtend> findAllProductWithCategory(Long id);
 
-    List<CategoryExtend> findAllWithCategory();
 }

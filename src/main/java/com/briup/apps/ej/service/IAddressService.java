@@ -14,5 +14,5 @@ public interface IAddressService {
     int insertOrUpdate(Address address);
     List<Address> findAll();
     List<Address>  query(Address address);
-    List<AddressExtend> findAllWithCustomer();
+//    List<AddressExtend> findAllWithCustomer();
 }

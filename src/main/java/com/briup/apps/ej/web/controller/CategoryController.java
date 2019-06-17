@@ -2,6 +2,7 @@ package com.briup.apps.ej.web.controller;
 
 import com.briup.apps.ej.bean.Address;
 import com.briup.apps.ej.bean.Category;
+import com.briup.apps.ej.bean.extend.CategoryExtend;
 import com.briup.apps.ej.service.IAddressService;
 import com.briup.apps.ej.service.ICategoryService;
 import com.briup.apps.ej.utils.Message;
@@ -61,18 +62,26 @@ public class CategoryController {
         return MessageUtil.success("success", ics.findAll());
     }
 
-    @ApiOperation("查找所有包含父信息")
-    @GetMapping("/findAllWithCategory")
-    public Message findAllWithCategory() {
-        return MessageUtil.success("success", ics.findAllWithCategory());
-    }
+//    @ApiOperation("查看分类下产品信息")
+//    @GetMapping("/findProductWithCategory")
+//    public Message findAllWithCategory(Long id) {
+//        return MessageUtil.success("success", ics.findProductWithCategory(id));
+//    }
 
     @GetMapping("query")
-    @ApiOperation("模糊查询顾客信息")
+    @ApiOperation("模糊查询种类信息")
     public Message query(Category category){
         List<Category> list=ics.query(category);
         return MessageUtil.success("success",list);
     }
+    @GetMapping("findAllProductWithCategory")
+    @ApiOperation("通过id查询该种类下所有产品")
+    public Message findAllProductWithCategory(@ApiParam(value ="主键" ,required=true)@NotNull@RequestParam(value ="id") Long id){
+        List<CategoryExtend> list=ics.findAllProductWithCategory(id);
+        return MessageUtil.success("success",list);
+    }
+
+
 
 
 }

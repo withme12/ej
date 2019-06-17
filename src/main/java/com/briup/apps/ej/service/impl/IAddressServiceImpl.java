@@ -22,10 +22,7 @@ public class IAddressServiceImpl  implements IAddressService {
         return am.selectByExample(ae);
     }
 
-    @Override
-    public List<AddressExtend> findAllWithCustomer() {
-        return am.findAllWithCustomer();
-    }
+
 
     @Override
     public List<Address> query(Address address) {

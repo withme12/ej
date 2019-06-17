@@ -2,16 +2,14 @@ package com.briup.apps.ej.web.controller;
 
 import com.briup.apps.ej.bean.Order;
 import com.briup.apps.ej.bean.Order_line;
+import com.briup.apps.ej.bean.extend.Order_lineExtend;
 import com.briup.apps.ej.service.IOrder_lineService;
 import com.briup.apps.ej.utils.Message;
 import com.briup.apps.ej.utils.MessageUtil;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -49,14 +47,14 @@ public class Order_lineController {
     }
 
     @ApiOperation("批量删除")
-    @GetMapping("batchDelete")
+    @PostMapping("batchDelete")
     public Message batchDelete(long[] ids) throws Exception{
         order_lineService.batchDelete(ids);
         return MessageUtil.success("9批量删除成功");
     }
 
     @ApiOperation("保存或更新用户信息")
-    @GetMapping("saveOrUpdate")
+    @PostMapping("saveOrUpdate")
     public Message insertOrUpdate(Order_line order_line) {
         try {
             order_lineService.insertOrUpdate(order_line);
@@ -66,4 +64,14 @@ public class Order_lineController {
             return MessageUtil.error(e.getMessage());
         }
     }
-}
+
+    @ApiOperation("查询订单详细信息")
+    @GetMapping("findOrderDetails")
+    public Message findOrderDetails(Long id) {
+
+           List<Order_lineExtend> list=order_lineService.findOrderDetails(id);
+    return MessageUtil.success("success",list);
+    }
+    }
+
+

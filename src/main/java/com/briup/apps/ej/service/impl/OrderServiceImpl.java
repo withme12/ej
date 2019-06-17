@@ -2,7 +2,9 @@ package com.briup.apps.ej.service.impl;
 
 import com.briup.apps.ej.bean.Order;
 import com.briup.apps.ej.bean.OrderExample;
+import com.briup.apps.ej.bean.extend.OrderExtend;
 import com.briup.apps.ej.dao.OrderMapper;
+import com.briup.apps.ej.dao.extend.OrderExtendMapper;
 import com.briup.apps.ej.service.IOrderService;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,8 @@ import java.util.List;
 public class OrderServiceImpl implements IOrderService {
     @Resource
     private OrderMapper orderMapper;
-
+@Resource
+private OrderExtendMapper orderExtendMapper;
 
 
     @Override
@@ -21,6 +24,8 @@ public class OrderServiceImpl implements IOrderService {
         OrderExample orderExample=new OrderExample();
         return orderMapper.selectByExample(orderExample);
     }
+
+
 
     @Override
     public Order findOrderById(Long id) {
@@ -30,10 +35,10 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public void insertOrUpdate(Order order) throws Exception {
         if(order.getId()!=null){
-            order.setStatus("正常");
+
             orderMapper.updateByPrimaryKey(order);
         }else{
-            order.setStatus("正常");
+          
             orderMapper.insert(order);
         }
     }
